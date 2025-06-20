@@ -1,0 +1,36 @@
+<div style="display: flex; align-items: center;justify-content: center">
+  <div class="game-container">
+    <div *ngIf="!winner" class="status">
+      Player
+      <span [ngStyle]="{ color: player === 'X' ? '#93B108' : 'red' }">
+        {{ player === 'X' ? 'O' : 'X' }} </span
+      >'s turn
+    </div>
+
+    <div *ngIf="!winner" class="board">
+      <div *ngFor="let row of [0, 1, 2]; let i = index" class="row">
+        <div
+          *ngFor="let col of [0, 1, 2]; let j = index"
+          class="cell"
+          [ngClass]="{
+            red: data[i][j] === 'X',
+            green: data[i][j] === 'O'
+          }"
+          (click)="onClick(i, j)"
+        >
+          {{ data[i][j] }}
+        </div>
+      </div>
+    </div>
+
+    <div
+      *ngIf="winner"
+      class="winner-box"
+      [style.color]="winner === 'X' ? 'red' : '#93B108'"
+    >
+      {{ winner }} {{ winner !== 'Draw' ? 'won!' : "It's a draw!" }}
+      <br />
+      <button class="play-again-btn" (click)="reset()">Play Again</button>
+    </div>
+  </div>
+</div>
