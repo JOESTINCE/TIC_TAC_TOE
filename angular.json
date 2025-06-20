@@ -5,7 +5,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "demo": {
+    "tic-tac-toe": {
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
